@@ -16,7 +16,8 @@ for(i=0;i<16;i++) {
         element.style.cssText = 'height: 40px; width: 40px; border: 1px solid black;'
         row.appendChild(element)
         element.addEventListener('mouseover', ()=> {
-            element.classList = 'toColor'
+            const [red,green,blue] = randColor()
+            element.style.backgroundColor = 'rgb(' + [red,green,blue].join(',') + ')'
         })
     }
     container.appendChild(row)
@@ -25,6 +26,15 @@ for(i=0;i<16;i++) {
 document.body.appendChild(buttonContainer)
 document.body.appendChild(container)
 
+
+const randColor = () => {
+    const min = 0;
+    const max = 255;
+    const red = Math.floor(Math.random() * (max - min) + min);
+    const green = Math.floor(Math.random() * (max - min) + min);
+    const blue = Math.floor(Math.random() * (max - min) + min);
+    return [red,green,blue]
+}
 
 
 const erase = () => {
@@ -41,7 +51,8 @@ const draw = (gridSize) => {
             element.style.cssText = 'height: 40px; width: 40px; border: 1px solid black;'
             row.appendChild(element)
             element.addEventListener('mouseover', ()=> {
-                element.classList = 'toColor'
+                const [red,green,blue] = randColor()
+                element.style.backgroundColor = 'rgb(' + [red,green,blue].join(',') + ')'
             })
         }
         container.appendChild(row)
